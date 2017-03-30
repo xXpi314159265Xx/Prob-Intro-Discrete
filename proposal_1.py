@@ -2,11 +2,7 @@
 # The player draws two balls and if the letters spell a word
 # in any order, the player is a winner.
 
-import ui
 import random
-
-#v = ui.load_view()
-#v.present('sheet')
 
 def draw_balls(letters):
 	'''INPUT: list of available letters written on balls
@@ -27,7 +23,8 @@ def check_letters(letter_list, word_list):
 	if word_1 in word_list:
 		return True, word_1, ball_1, ball_2
 	elif word_2 in word_list:
-		return True, word_2, ball_1, ball_2
+		# return True if order doesn't matter
+		return False, word_2, ball_1, ball_2
 	else:
 		return False, word_1, ball_1, ball_2
 		
@@ -47,6 +44,8 @@ def many_games(number, letter_list, word_list):
 	return games_won, total_games
 	
 def one_game(letter_list, word_list):
+	'''INPUT: List of letters to draw and list of legal words
+	OUTPUT: The letters drawn and whether or not they form a legal word.'''
 	a, b, ball_1, ball_2 = check_letters(letter_list, word_list)
 	print("You drew a ball with the letters:")
 	print("%s and %s" %(ball_1, ball_2))
@@ -62,6 +61,7 @@ def main():
 	number_of_games = int(input("How many games do you want to play?\n"))
 	print()
 	while True:
+		# Can change game by editing two lists below
 		letters = ['l','i','o','n','s']
 		words = ['in', 'no', 'on', 'so', 'is']
 		lo_a_word = False
