@@ -57,6 +57,9 @@ def draw_three():
 
 number_of_games = int(input("How many games would you like to play?\n"))
 draw = int(input("How many letters would you like to draw for each of these games, 2 or 3?\n"))
+two_winnings = int(input("How much does a two-word only winner receive?\n"))
+three_winnings = int(input("How much does a three-word only winner receive?\n"))
+double_winnings = int(input("How much does a two-word and three-word winner receive?\n"))
 
 def play_games(number_of_games, draw):
     total = number_of_games
@@ -74,6 +77,7 @@ def play_games(number_of_games, draw):
                 two_letter_wins += win_2
                 three_letter_wins += win_3
         number_of_games -= 1
+    total_winnings = two_letter_wins*two_winnings + three_letter_wins*three_winnings + double_wins*double_winnings
     if draw == 3:
         print()
         print("RESULTS")
@@ -90,5 +94,7 @@ def play_games(number_of_games, draw):
     print("You won with both a two and three letter word {} percent of the time.".format(round((double_wins/total)*100,2)))
     print("You won with only a two letter word {} percent of the time.".format(round((two_letter_wins/total)*100,2)))
     print("You won with only a three letter word {} percent of the time.".format(round((three_letter_wins/total)*100,2)))
+    print()
+    print("The total prize money paid is {}.".format(total_winnings))
 
 play_games(number_of_games, draw)
