@@ -2,7 +2,7 @@
 # The player draws two balls and if the letters spell a word
 # in any order, the player is a winner.
 
-import random
+import random, os
 
 def draw_balls(letters):
 	'''INPUT: list of available letters written on balls
@@ -48,9 +48,11 @@ def one_game(letter_list, word_list):
 	OUTPUT: The letters drawn and whether or not they form a legal word.'''
 	a, b, ball_1, ball_2 = check_letters(letter_list, word_list)
 	print("You drew a ball with the letters:")
+	print()
 	print("%s and %s" %(ball_1, ball_2))
+	print()
 	if a == True:
-		print("The letters %s and %s form the word %s" %(ball_1, ball_2, b))
+		print("The letters %s and %s form the word %s, You win!" %(ball_1, ball_2, b))
 	else:
 		print("Sorry! The letters %s and %s do not form a legal word." %(ball_1, ball_2))
 		print("You lose!")
@@ -63,22 +65,22 @@ def main():
 	while True:
 		# Can change game by editing two lists below
 		letters = ['l','i','o','n','s']
-		words = ['in', 'no', 'on', 'so', 'is']
+		words = ['in', 'no', 'on', 'so', 'is', 'lo']
 		lo_a_word = False
 		if lo_a_word:
 			words.append('lo')
 		if number_of_games == 1:
 			one_game(letters, words)
-			choice = input("Would you like to play again? 'y' or 'n'")
+			choice = input("Would you like to play again? 'y' or 'n'\n")
 			if choice == 'n':
 				print()
 				print("Thanks for playing!")
 				break
+			#os.system('cls')
 		else:
 			wins, total = many_games(number_of_games, letters, words)
 			print("You played %s games and won %s of them." %(total, wins))
 			break
 		print()
-		
-	
+
 main()

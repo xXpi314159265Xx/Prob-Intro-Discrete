@@ -3,7 +3,7 @@
 # 1 and 9 are generated at random. The contestant wins if both
 # numbers match exactly.
 
-import random
+import random, os
 
 def player_numbers():
     player_number_list = []
@@ -29,10 +29,12 @@ def game_numbers():
 def one_game():
     response = 'y'
     while response == 'y':
+        os.system('cls')
         player = player_numbers()
         game = game_numbers()
-        print("The first number is %i." %(game[0]))
-        print("The second number is %i." %(game[1]))
+        print()
+        print("The numbers drawn are:")
+        print("%i and %i" %(game[0], game[1]))
         print()
         if player == game:
             print("You won!")
@@ -65,6 +67,5 @@ def main():
         wins = many_games(number_of_games)
         print()
         print("You played %i games and won %i of them." %(number_of_games, wins))
-
 
 main()

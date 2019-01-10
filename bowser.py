@@ -22,10 +22,10 @@ def draw_two(letters):
         word += random_choice[i]
     #print(word)
     if word in two_letter_words:
-        print("You win.")
+        #print("You win.")
         return 1
     else:
-        print("You lost.")
+        #print("You lost.")
         return 0
 
 def draw_three():
@@ -87,7 +87,7 @@ def play_games(number_of_games, draw):
         print()
         print("ONLY ONE WINNING WORD")
         print("You had a winning three letter word {} times.".format(three_letter_wins))
-    print("You a winning two letter word {} times.".format(two_letter_wins))
+    print("You had a winning two letter word {} times.".format(two_letter_wins))
     print()
     print("STATS")
     print()

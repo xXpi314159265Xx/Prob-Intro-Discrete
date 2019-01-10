@@ -3,7 +3,7 @@
 # each time the dice shows the chosen number. However, if neither of
 # the dice has the number, the contestant loses the dollar.
 
-import random
+import random, os
 
 def roll_dice():
     dice_1 = random.randint(1,6)
@@ -24,6 +24,7 @@ def check_dice(player_number,dice_1,dice_2):
 def one_game():
     response = 'y'
     while response == 'y':
+        os.system('cls')
         number = int(input("What number do you choose?\n"))
         assert 0 < number < 7
         print()
@@ -75,6 +76,6 @@ def main():
             print("Overall, you lost a total of $%i." %(money*-1))
         else:
             print("Overall, you won a total of $%i." %(money))
-
+        input("Press 'Enter' to continue.")
 
 main()
